@@ -70,7 +70,17 @@ function Menu() {
 }
 
 function Footer() {
-  // return React.createElement("footer", null, "We're open for order!");
+
+  const currentTime = new Date().getHours();
+  const openTime = 8;
+  const closeTime = 18;
+  const statusOpen = currentTime >= openTime && currentTime <= closeTime;
+  if(statusOpen) {
+    console.log("Open");
+  } else {
+    console.log("Close");
+  }
+
   return (
     <footer>{new Date().toLocaleTimeString()}. We're open for order!</footer>
   );
