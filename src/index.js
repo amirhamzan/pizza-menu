@@ -50,19 +50,38 @@ function App() {
   console.log("hello");
   return (
     <div>
-      <h1>Hello React!</h1>
-      <Pizza />
-      <Pizza />
+      <Header />
+      <Menu />
+      <Footer />
     </div>
+  );
+}
+
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
+
+function Menu() {
+  return <div>
+    <Pizza />
+    <Pizza />
+    <Pizza />
+  </div>
+}
+
+function Footer() {
+  // return React.createElement("footer", null, "We're open for order!");
+  return (
+    <footer>{new Date().toLocaleTimeString()}. We're open for order!</footer>
   );
 }
 
 function Pizza() {
   return (
     <div>
+      <img src="pizzas/focaccia.jpg" alt="pizza-focaccia" />
       <h1>Focaccia</h1>
       <p>Bread with italian olive oil and rosemar</p>
-      <img src="pizzas/focaccia.jpg" alt="pizza-focaccia" />
     </div>
   );
 }
