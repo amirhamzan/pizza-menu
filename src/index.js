@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -47,9 +48,8 @@ const pizzaData = [
 ];
 
 function App() {
-  console.log("hello");
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -58,31 +58,39 @@ function App() {
 }
 
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
 }
 
 function Menu() {
-  return <div>
-    <Pizza />
-    <Pizza />
-    <Pizza />
-  </div>
+  return (
+    <div className="menu">
+      <h2 style={{color: "green"}}>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </div>
+  );
 }
 
 function Footer() {
-
   const currentTime = new Date().getHours();
   const openTime = 8;
   const closeTime = 18;
   const statusOpen = currentTime >= openTime && currentTime <= closeTime;
-  if(statusOpen) {
+  if (statusOpen) {
     console.log("Open");
   } else {
     console.log("Close");
   }
 
   return (
-    <footer>{new Date().toLocaleTimeString()}. We're open for order!</footer>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}. We're open for order!
+      </footer>
   );
 }
 
@@ -90,7 +98,7 @@ function Pizza() {
   return (
     <div>
       <img src="pizzas/focaccia.jpg" alt="pizza-focaccia" />
-      <h1>Focaccia</h1>
+      <h3>Focaccia</h3>
       <p>Bread with italian olive oil and rosemar</p>
     </div>
   );
