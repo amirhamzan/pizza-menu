@@ -81,7 +81,7 @@ function Menu() {
 function Footer() {
   const currentTime = new Date().getHours();
   const openTime = 8;
-  const closeTime = 18;
+  const closeTime = 15;
   const statusOpen = currentTime >= openTime && currentTime <= closeTime;
   if (statusOpen) {
     console.log("Open");
@@ -91,7 +91,11 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We're open for order!
+      {statusOpen ? (
+        <div>We're open for order! Order now on restaurant or online.</div>
+      ) : (
+        <div>Sorry, we're close. Please come back later. Open from {openTime}:00 - {closeTime}:00</div>
+      )}
     </footer>
   );
 }
