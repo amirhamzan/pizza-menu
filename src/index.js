@@ -69,6 +69,7 @@ function Menu() {
   return (
     <div className="menu">
       <h2 style={{ color: "green" }}>Our Menu</h2>
+      <p>Authentic Italian cuisine. 6 creative dishes to choose from.</p>
       <ul className="pizzas">
         {pizzaData.map((thisIsParam) => (
           <Pizza pizzaObj={thisIsParam} key={thisIsParam.name} />
@@ -86,8 +87,13 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {statusOpen ? <Order closeTime={closeTime}/> : (
-        <div>Sorry, we're close. Please come back later. Open from {openTime}:00 - {closeTime}:00</div>
+      {statusOpen ? (
+        <Order closeTime={closeTime} />
+      ) : (
+        <div>
+          Sorry, we're close. Please come back later. Open from {openTime}:00 -{" "}
+          {closeTime}:00
+        </div>
       )}
     </footer>
   );
@@ -101,18 +107,14 @@ function Order({ closeTime }) {
 
 function Pizza(props) {
   return (
-    <li className="pizza">
-      {props.pizzaObj.soldOut ? (
-        <div className="sold-out">
-          <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-        </div>
-      ) : (
-        <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-      )}
+    <li className={`pizza ${props.pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
       <div>
         <h3>{props.pizzaObj.name}</h3>
         <p>{props.pizzaObj.ingredients}</p>
-        <span>${props.pizzaObj.price + 2.55}</span>
+        <span>
+          {props.pizzaObj.soldOut ? "SOLD OUT" : `RM${props.pizzaObj.price + 2.55}`}
+        </span>
       </div>
     </li>
   );
