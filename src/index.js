@@ -81,23 +81,22 @@ function Menu() {
 function Footer() {
   const currentTime = new Date().getHours();
   const openTime = 8;
-  const closeTime = 15;
+  const closeTime = 18;
   const statusOpen = currentTime >= openTime && currentTime <= closeTime;
-  if (statusOpen) {
-    console.log("Open");
-  } else {
-    console.log("Close");
-  }
 
   return (
     <footer className="footer">
-      {statusOpen ? (
-        <div>We're open for order! Order now on restaurant or online.</div>
-      ) : (
+      {statusOpen ? <Order closeTime={closeTime}/> : (
         <div>Sorry, we're close. Please come back later. Open from {openTime}:00 - {closeTime}:00</div>
       )}
     </footer>
   );
+}
+
+function Order({closeTime}) {
+  return (
+    <div>We're open now and will be closed on {closeTime}:00. Order now!</div>
+  )
 }
 
 function Pizza(props) {
