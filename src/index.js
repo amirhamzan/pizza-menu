@@ -93,16 +93,22 @@ function Footer() {
   );
 }
 
-function Order({closeTime}) {
+function Order({ closeTime }) {
   return (
     <div>We're open now and will be closed on {closeTime}:00. Order now!</div>
-  )
+  );
 }
 
 function Pizza(props) {
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      {props.pizzaObj.soldOut ? (
+        <div className="sold-out">
+          <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+        </div>
+      ) : (
+        <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      )}
       <div>
         <h3>{props.pizzaObj.name}</h3>
         <p>{props.pizzaObj.ingredients}</p>
